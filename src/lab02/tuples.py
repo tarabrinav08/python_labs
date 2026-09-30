@@ -1,75 +1,44 @@
 def format_record(rec: tuple[str, str, float]) -> str:
-    # Проверяем, что запись является кортежем
+    """Форматирует запись студента в виде строки."""
+
     if not isinstance(rec, tuple):
-        raise TypeError
+        raise TypeError("Запись должна быть кортежем")
 
-    # Проверяем количество элементов
     if len(rec) != 3:
-        raise ValueError
+        raise ValueError("В кортеже должно быть 3 элемента")
 
-    fio = rec[0]
-    group = rec[1]
-    gpa = rec[2]
+    fio, group, gpa = rec
 
-    # Проверяем тип ФИО
-    if not isinstance(fio, str):
-        raise TypeError
+    if not isinstance(fio, str) or not isinstance(group, str):
+        raise TypeError("ФИО и группа должны быть строками")
 
-    # Проверяем тип группы
-    if not isinstance(group, str):
-        raise TypeError
-
-    # Проверяем тип GPA
     if not isinstance(gpa, float):
-        raise TypeError
+        raise TypeError("GPA должен быть числом float")
 
-    # Убираем лишние пробелы
-    fio = ' '.join(fio.strip().split())
+    fio = " ".join(fio.strip().split())
     group = group.strip()
 
-    # Проверяем, что ФИО и группа не пустые
     if not fio or not group:
-        raise ValueError
+        raise ValueError("ФИО и группа не должны быть пустыми")
 
-    # Проверяем допустимый диапазон GPA
     if gpa < 0.0 or gpa > 5.0:
-        raise ValueError
+        raise ValueError("GPA должен быть от 0.0 до 5.0")
 
-    # Разделяем ФИО на отдельные слова
     parts = fio.split()
 
-    # В ФИО должно быть 2 или 3 слова
     if len(parts) < 2 or len(parts) > 3:
-        raise ValueError
+        raise ValueError("ФИО должно содержать 2 или 3 слова")
 
-    surname = parts[0].capitalize()  # Фамилия
-    initials = ''
+    surname = parts[0].capitalize()
 
-    # Формируем инициалы имени и отчества
+    initials = ""
     for name in parts[1:]:
-        initials += name[0].upper() + '.'
+        initials += name[0].upper() + "."
 
-    # Собираем итоговую строку
-    return f'{surname} {initials}, гр. {group}, GPA {gpa:.2f}'
+    return f"{surname} {initials}, гр. {group}, GPA {gpa:.2f}"
 
 
-print('\nformat_record:')
 print(format_record(("Иванов Иван Иванович", "BIVT-25", 4.6)))
 print(format_record(("Петров Пётр", "IKBO-12", 5.0)))
 print(format_record(("Петров Пётр Петрович", "IKBO-12", 5.0)))
 print(format_record(("  сидорова  анна   сергеевна ", "ABB-01", 3.999)))
-
-try:
-    print(format_record(("", "BIVT-25", 4.6)))
-except ValueError:
-    print('ValueError')
-
-try:
-    print(format_record(("Иванов Иван", "", 4.6)))
-except ValueError:
-    print('ValueError')
-
-try:
-    print(format_record(("Иванов Иван", "BIVT-25", "4.6")))
-except TypeError:
-    print('TypeError')
