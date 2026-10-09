@@ -1,43 +1,16 @@
-# Лабораторная работа №1
-## Задание 1
- ![1 задание](images/lab01/img01.png)
-  Определяется возраст человека через один год на основе введённых имени и текущего возраста.
-
-## Задание 2
- ![2 задание](images/lab01/img02.png)
-  Для двух введённых чисел находятся их общая сумма и среднее арифметическое.
-
-## Задание 3
- ![3 задание](images/lab01/img03.png) 
-  Рассчитывается конечная стоимость товара после применения скидки и добавления НДС.
-
-## Задание 4
- ![4 задание](images/lab01/img04.png)
-  Указанное количество минут преобразуется в соответствующее количество часов и минут.
-
-## Задание 5
- ![5 задание](images/lab01/img05.png)
- 
- Из введённого ФИО формируются инициалы, а также подсчитывается количество символов после удаления лишних пробелов.
-
-## Задание 6
- ![6 задание](images/lab01/img06.png)
- По данным участников определяется, сколько человек выбрали очное обучение, а сколько — заочное.
-
-
 # Лабораторная работа №2
 ## Задание 1 
 ```python 
 def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
     # Проверяем список на пустоту
-    if len(nums) == 0:
-        raise ValueError
+    if not nums:
+        raise ValueError("Список чисел не должен быть пустым")
 
     minimum = nums[0]
     maximum = nums[0]
 
-    # Ищем минимальное и максимальное значение
-    for x in nums:
+    # Ищем минимальное и максимальное значения
+    for x in nums[1:]:
         if x < minimum:
             minimum = x
         if x > maximum:
@@ -47,36 +20,34 @@ def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
 
 
 def unique_sorted(nums: list[float | int]) -> list[float | int]:
-    result = []  # Список для уникальных чисел
+    result = []
 
-    # Добавляем только неповторяющиеся числа
+    # Добавляем только уникальные числа
     for x in nums:
         if x not in result:
             result.append(x)
 
     # Сортируем список вручную
     for i in range(len(result)):
-        for j in range(i + 1, len(result)):
-            if result[i] > result[j]:
-                result[i], result[j] = result[j], result[i]
+        for j in range(len(result) - 1 - i):
+            if result[j] > result[j + 1]:
+                result[j], result[j + 1] = result[j + 1], result[j]
 
     return result
 
 
 def flatten(mat: list[list | tuple]) -> list:
-    result = []  # Новый список для элементов
+    result = []
 
-    # Проверяем каждую строку
+    # Проверяем каждую строку матрицы
     for row in mat:
         if not isinstance(row, (list, tuple)):
-            raise TypeError
+            raise TypeError("Элемент матрицы должен быть списком или кортежем")
 
-        # Добавляем элементы строки в общий список
         for x in row:
             result.append(x)
 
     return result
-
 
 print('\nmin_max')
 print(min_max([3, -1, 5, 5, 0]))
@@ -84,6 +55,10 @@ print(min_max([42]))
 print(min_max([-5, -2, -9]))
 print(min_max([1.5, 2, 2.0, -3.1]))
 
+try:
+    min_max([])
+except ValueError as e:
+    print(f"ValueError: {e}")
 
 print('\nunique_sorted')
 print(unique_sorted([3, 1, 2, 1, 3]))
@@ -91,11 +66,17 @@ print(unique_sorted([]))
 print(unique_sorted([-1, -1, 0, 2, 2]))
 print(unique_sorted([1.0, 1, 2.5, 2.5, 0]))
 
-
 print('\nflatten')
 print(flatten([[1, 2], [3, 4]]))
 print(flatten([[1, 2], (3, 4, 5)]))
 print(flatten([[1], [], [2, 3]]))
+
+try:
+    flatten([[1, 2], "ab"])
+except TypeError as e:
+    print(f"TypeError: {e}")
+
+
 ```
  ![1 задание](images/lab02/arrays01.png)
  
