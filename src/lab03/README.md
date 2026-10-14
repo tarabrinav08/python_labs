@@ -52,11 +52,8 @@ def count_freq(tokens: list[str]) -> dict[str, int]:
     """
     freq = {}
 
-    for word in tokens:
-        if word in freq:
-            freq[word] += 1
-        else:
-            freq[word] = 1
+    for w in tokens:
+        freq[w] = freq.get(w, 0) + 1
 
     return freq
 
@@ -68,8 +65,8 @@ def top_n(freq: dict[str, int], n: int = 5) -> list[tuple[str, int]]:
     Сначала идут слова, которые встречаются чаще всего.
     Если частота одинаковая, слова расставляются по алфавиту.
     """
-    words = list(freq.items())
-    words.sort(key=lambda x: (-x[1], x[0]))
+    words = sorted(freq.items(), key=lambda kv: (-kv[1], kv[0]))
+
     return words[:n]
 
 
