@@ -261,3 +261,27 @@ Bob,25,Moscow
 ```bash
 open data/out/people.xlsx
 ```
+**Открытие Excel-файла на Windows(PowerShell)**
+```bash
+start data/out/people.xlsx
+```
+## 4. CSV → XLSX (cities.csv)
+ 
+Для дополнительной проверки используется файл `data/samples/cities.csv`.
+
+**Команда запуска:**
+```bash
+python3 -c 'from src.lab05.csv_xlsx import csv_to_xlsx; csv_to_xlsx("data/samples/cities.csv", "data/out/cities.xlsx")'
+```
+**Открытие Excel-файла на Mac:**
+```bash
+open data/out/cities.xlsx
+```
+**Открытие Excel-файла на Windows(PowerShell)**
+```bash
+start data/out/cities.xlsx
+```
+
+Также файлы можно открыть вручную через проводник, перейдя в папку `data/out/`.
+
+
