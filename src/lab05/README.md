@@ -284,4 +284,12 @@ start data/out/cities.xlsx
 
 Также файлы можно открыть вручную через проводник, перейдя в папку `data/out/`.
 
-
+**Пример входа `(data/samples/cities.csv)`:**
+```python 
+city,country,population
+Moscow,Russia,13000000
+SPB,Russia,5600000
+Kazan,Russia,1300000
+```
+**Пример результата `(data/out/cities.xlsx)`:**
+![4. CSV → XLSX (cities.csv)](../../images/lab05/img02.png)
