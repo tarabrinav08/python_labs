@@ -86,5 +86,17 @@ def csv_to_json(csv_path: str, json_path: str) -> None:
 
            
 if __name__ == "__main__":
-    json_to_csv("data/samples/people.json", "data/out/people_from_json.csv")
-    csv_to_json("data/samples/people.csv", "data/out/people_from_csv.json")
+    json_to_csv("data/lab05/samples/people.json", "data/lab05/out/people_from_json.csv")
+    csv_to_json("data/lab05/samples/people.csv", "data/lab05/out/people_from_csv.json")
+
+    print("Тест конвертации JSON <-> CSV выполнены.")
+
+    with open("data/lab05/samples/people.json", encoding="utf-8") as f:
+        count_json = len(json.load(f))
+    
+    with open("data/lab05/out/people_from_json.csv", encoding="utf-8", newline="") as f:
+        count_csv = len(list(csv.DictReader(f)))
+
+    # Проверка: Количество записей до и после совпадает.
+
+    print(f"Записей в JSON: {count_json}, строк в CSV: {count_csv}")
