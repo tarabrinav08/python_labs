@@ -65,23 +65,23 @@ def two_sum_fast(nums, target):
 
 
 if __name__ == "__main__":
-    print("Линейный поиск:")
+    print("\nЛинейный поиск:")
     print(linear_search([4, 2, 7, 2], 2))
     print(linear_search([4, 2, 7, 2], 9))
     print(linear_search([], 5))
 
-    print("Бинарный поиск:")
+    print("\nБинарный поиск:")
     print(binary_search([1, 3, 5, 7, 9], 5))
     print(binary_search([1, 3, 5, 7, 9], 3))
     print(binary_search([1, 3, 5, 7, 9], 10))
     print(binary_search([], 5))
 
-    print("Two Sum Brute:")
+    print("\nTwo Sum Brute:")
     print(two_sum_brute([2, 7, 11, 15], 9))
     print(two_sum_brute([1, 2, 3], 10))
     print(two_sum_brute([4, 4, 8], 8))
 
-    print("Two Sum Fast:")
+    print("\nTwo Sum Fast:")
     print(two_sum_fast([2, 7, 11, 15], 9))
     print(two_sum_fast([1, 2, 3], 10))
     print(two_sum_fast([4, 4, 8], 8))
