@@ -8,30 +8,6 @@
 
 Используется только стандартная библиотека Python (`argparse`, `os`, `pathlib`, `sys`) и функции из предыдущих лабораторных.
 
-## Структура проекта
-
-```text
-python_labs/
-├─ README.md
-├─ src/
-│  ├─ lib/
-│  │  └─ text.py              # normalize, tokenize, count_freq, top_n (ЛР3)
-│  ├─ lab04/
-│  │  └─ io_txt_csv.py        # read_text (ЛР4)
-│  ├─ lab05/
-│  │  ├─ json_csv.py          # json_to_csv, csv_to_json
-│  │  └─ csv_xlsx.py          # csv_to_xlsx
-│  └─ lab06/
-│     ├─ __init__.py
-│     ├─ cli_text.py          # подкоманды cat, stats
-│     └─ cli_convert.py       # подкоманды json2csv, csv2json, csv2xlsx
-├─ data/
-│  ├─ samples/                # входные файлы (people.json, people.csv, people.txt)
-│  └─ out/                    # результаты конвертации
-└─ images/
-   └─ lab06/                  # скриншоты работы программ
-```
-
 ## Способ запуска
 
 Все команды выполняются **из корневой папки `python_labs`** через терминал (например, в VS Code). Запуск модулей идёт через `python3 -m`, чтобы корректно работали импорты вида `from src.lab05...`:
@@ -124,7 +100,7 @@ if __name__ == "__main__":
 python3 -m src.lab06.cli_text cat --input data/samples/people.csv -n
 ```
 
-![cat с нумерацией](images/lab06/cat_n.png)
+![cat с нумерацией](../../images/lab06/cat_n.png)
 
 **2. `cat` — вывод содержимого файла без нумерации**
 
@@ -132,7 +108,7 @@ python3 -m src.lab06.cli_text cat --input data/samples/people.csv -n
 python3 -m src.lab06.cli_text cat --input data/samples/people.csv
 ```
 
-![cat без нумерации](images/lab06/cat.png)
+![cat без нумерации](../../images/lab06/cat.png)
 
 **3. `stats` — подсчёт частоты слов (топ-5)**
 
@@ -149,7 +125,7 @@ python3 -m src.lab06.cli_text stats --input data/samples/people.txt --top 5
 ... (ещё 4 строки)
 ```
 
-![stats](images/lab06/stats.png)
+![stats](../../images/lab06/stats.png)
 
 ---
 
@@ -244,7 +220,7 @@ python3 -m src.lab06.cli_text --help
 python3 -m src.lab06.cli_convert --help
 ```
 
-![help модулей](images/lab06/help_main.png)
+![help модулей](../../images/lab06/help_main.png)
 
 Справка по каждой подкоманде:
 
@@ -256,7 +232,7 @@ python3 -m src.lab06.cli_convert csv2json --help
 python3 -m src.lab06.cli_convert csv2xlsx --help
 ```
 
-![help подкоманд](images/lab06/help_sub.png)
+![help подкоманд](../../images/lab06/help_sub.png)
 
 ---
 
@@ -286,7 +262,7 @@ error: --top должен быть положительным числом
 python3 -m src.lab06.cli_text cat --input data/samples/no_such_file.txt
 ```
 
-![ошибки](images/lab06/errors.png)
+![ошибки](../../images/lab06/errors.png)
 
 ---
 
