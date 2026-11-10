@@ -26,9 +26,13 @@ def linear_search(nums, x):
     Если число не найдено, возвращает -1.
     """
 
+    # Перебираем все индексы списка
     for i in range(len(nums)):
+        # Проверяем, совпадает ли элемент с искомым числом
         if nums[i] == x:
             return i
+
+    # Если число не найдено, возвращаем -1
     return -1
 
 
@@ -38,18 +42,29 @@ def binary_search(sorted_nums, x):
     Возвращает индекс или -1.
     На неотсортированном списке результат не определён.
     """
+
+    # Устанавливаем левую и правую границы поиска
     lo = 0
     hi = len(sorted_nums) - 1
 
+    # Продолжаем поиск, пока границы не пересеклись
     while lo <= hi:
+        # Находим индекс середины списка
         mid = (lo + hi) // 2
+
+        # Если число найдено, возвращаем его индекс
         if sorted_nums[mid] == x:
             return mid
+
+        # Если искомое число больше, ищем в правой половине
         elif sorted_nums[mid] < x:
             lo = mid + 1
+
+        # Иначе продолжаем поиск в левой половине
         else:
             hi = mid - 1
 
+    # Если число отсутствует, возвращаем -1
     return -1
 
 
@@ -59,11 +74,14 @@ def two_sum_brute(nums, target):
     Возвращает их индексы или None.
     """
 
+    # Перебираем все пары элементов с разными индексами
     for i in range(len(nums)):
         for j in range(i + 1, len(nums)):
+            # Проверяем, равна ли сумма нужному значению
             if nums[i] + nums[j] == target:
                 return (i, j)
 
+    # Если подходящая пара не найдена
     return None
 
 
@@ -73,35 +91,49 @@ def two_sum_fast(nums, target):
     Возвращает пару индексов или None.
     """
 
+    # Создаём словарь для хранения чисел и их индексов
     seen = {}
+
+    # Перебираем элементы списка
     for i in range(len(nums)):
         x = nums[i]
+
+        # Вычисляем число, которого не хватает до target
         need = target - x
 
+        # Проверяем, встречалось ли нужное число ранее
         if need in seen:
             return (seen[need], i)
+
+        # Сохраняем текущее число и его индекс
         seen[x] = i
 
+    # Если подходящая пара не найдена
     return None
 
 
 if __name__ == "__main__":
-    print("\nЛинейный поиск:")
+
+    # Проверка линейного поиска
+    print("\nLinear Search:")
     print(linear_search([4, 2, 7, 2], 2))
     print(linear_search([4, 2, 7, 2], 9))
     print(linear_search([], 5))
 
-    print("\nБинарный поиск:")
+    # Проверка бинарного поиска
+    print("\nBinary Search:")
     print(binary_search([1, 3, 5, 7, 9], 5))
     print(binary_search([1, 3, 5, 7, 9], 3))
     print(binary_search([1, 3, 5, 7, 9], 10))
     print(binary_search([], 5))
 
+    # Проверка поиска пары перебором
     print("\nTwo Sum Brute:")
     print(two_sum_brute([2, 7, 11, 15], 9))
     print(two_sum_brute([1, 2, 3], 10))
     print(two_sum_brute([4, 4, 8], 8))
 
+    # Проверка быстрого поиска пары через словарь
     print("\nTwo Sum Fast:")
     print(two_sum_fast([2, 7, 11, 15], 9))
     print(two_sum_fast([1, 2, 3], 10))
@@ -129,16 +161,21 @@ def bubble_sort(nums):
     Возвращает новый список, исходный не изменяет.
     """
 
+    # Создаём копию списка, чтобы не изменять исходный
     nums = list(nums)
 
+    # Перебираем список несколько раз
     for i in range(len(nums)):
         swapped = False
 
+        # Сравниваем соседние элементы
         for j in range(len(nums) - 1 - i):
             if nums[j] > nums[j + 1]:
+                # Меняем элементы местами, если они стоят неправильно
                 nums[j], nums[j + 1] = nums[j + 1], nums[j]
                 swapped = True
 
+        # Если обменов не было, завершаем сортировку
         if not swapped:
             break
 
@@ -151,16 +188,22 @@ def insertion_sort(nums):
     Возвращает новый список, исходный не изменяет.
     """
 
+    # Создаём копию исходного списка
     nums = list(nums)
 
+    # Перебираем элементы, начиная со второго
     for i in range(1, len(nums)):
         key = nums[i]
         j = i - 1
 
+        # Сдвигаем большие элементы вправо
         while j >= 0 and nums[j] > key:
             nums[j + 1] = nums[j]
             j -= 1
+
+        # Вставляем элемент на нужное место
         nums[j + 1] = key
+
     return nums
 
 
@@ -170,29 +213,38 @@ def selection_sort(nums):
     Возвращает новый список, исходный не изменяет.
     """
 
+    # Создаём копию исходного списка
     nums = list(nums)
+
+    # Перебираем позиции списка
     for i in range(len(nums)):
         min_index = i
+
+        # Ищем минимальный элемент в оставшейся части списка
         for j in range(i + 1, len(nums)):
             if nums[j] < nums[min_index]:
                 min_index = j
 
+        # Ставим найденный минимальный элемент на текущую позицию
         nums[i], nums[min_index] = nums[min_index], nums[i]
 
     return nums
 
 
 if __name__ == "__main__":
+    # Проверка сортировки пузырьком
     print("\nBubble Sort:")
     print(bubble_sort([3, 1, 2]))
     print(bubble_sort([2, 2, 1]))
     print(bubble_sort([]))
 
+    # Проверка сортировки вставками
     print("\nInsertion Sort:")
     print(insertion_sort([3, 1, 2]))
     print(insertion_sort([5, 2, 4]))
     print(insertion_sort([]))
 
+    # Проверка сортировки выбором
     print("\nSelection Sort:")
     print(selection_sort([3, 1, 2]))
     print(selection_sort([5, 2, 8, 1]))
@@ -377,12 +429,19 @@ from src.lab04.io_txt_csv import write_csv
 
 
 def bench_sorts(n):
+    """
+    Измеряет время выполнения разных алгоритмов сортировки.
+    Возвращает список результатов измерений.
+    """
+    # Создаём случайный список и список для результатов
     data = [random.randint(-1000, 1000) for _ in range(n)]
     rows = []
 
+    # Измеряем время встроенной сортировки
     t = timeit.timeit(lambda: sorted(data), number=1)
     rows.append(("sort", n, "sorted", t))
 
+    # Сравниваем три сортировки на списках меньше 100000 элементов
     if n < 100000:
         t = timeit.timeit(lambda: bubble_sort(data), number=1)
         rows.append(("sort", n, "bubble_sort", t))
@@ -393,6 +452,7 @@ def bench_sorts(n):
         t = timeit.timeit(lambda: selection_sort(data), number=1)
         rows.append(("sort", n, "selection_sort", t))
     else:
+        # Для больших списков пропускаем медленные сортировки
         rows.append(("sort", n, "bubble_sort", "> 60 с"))
         rows.append(("sort", n, "insertion_sort", "> 60 с"))
         rows.append(("sort", n, "selection_sort", "> 60 с"))
@@ -401,21 +461,29 @@ def bench_sorts(n):
 
 
 def bench_search():
+    """
+    Сравнивает время линейного и бинарного поиска.
+    Отдельно измеряет предварительную сортировку.
+    """
+    # Создаём список чисел и 10000 запросов
     nums = [random.randint(0, 100000) for _ in range(100000)]
     queries = [random.randint(0, 100000) for _ in range(10000)]
     rows = []
 
+    # Измеряем время сортировки перед бинарным поиском
     t = timeit.timeit(lambda: sorted(nums), number=1)
     rows.append(("search", 100000, "sorting_before_binary", t))
 
     sorted_nums = sorted(nums)
 
+    # Измеряем время линейного поиска
     t = timeit.timeit(
         lambda: [linear_search(nums, x) for x in queries],
         number=1
     )
     rows.append(("search", 100000, "linear_search", t))
 
+    # Измеряем время бинарного поиска
     t = timeit.timeit(
         lambda: [binary_search(sorted_nums, x) for x in queries],
         number=1
@@ -426,13 +494,20 @@ def bench_search():
 
 
 def bench_two_sum(n):
+    """
+    Сравнивает скорость двух способов поиска пары чисел.
+    Возвращает результаты измерений.
+    """
+    # Создаём список уникальных чисел и гарантированную сумму
     nums = random.sample(range(1, 1000000000), n)
     target = nums[-2] + nums[-1]
     rows = []
 
+    # Измеряем время перебора пар
     t = timeit.timeit(lambda: two_sum_brute(nums, target), number=1)
     rows.append(("two_sum", n, "two_sum_brute", t))
 
+    # Измеряем время поиска через словарь
     t = timeit.timeit(lambda: two_sum_fast(nums, target), number=1)
     rows.append(("two_sum", n, "two_sum_fast", t))
 
@@ -440,22 +515,28 @@ def bench_two_sum(n):
 
 
 if __name__ == "__main__":
+    # Фиксируем генерацию случайных чисел
     random.seed(42)
     results = []
 
+    # Запускаем измерения сортировок
     for n in [1000, 10000, 100000]:
         results.extend(bench_sorts(n))
 
+    # Запускаем измерения поиска
     results.extend(bench_search())
 
+    # Запускаем измерения Two Sum
     for n in [1000, 10000]:
         results.extend(bench_two_sum(n))
 
+    # Выводим заголовок таблицы
     print(f"{'task':<12} {'n':<10} {'impl':<25} {'seconds':<15}")
     print("-" * 65)
 
     csv_rows = []
 
+    # Выводим результаты и подготавливаем данные для CSV
     for task, n, impl, seconds in results:
         if isinstance(seconds, float):
             seconds_text = f"{seconds:.6f}"
@@ -465,13 +546,14 @@ if __name__ == "__main__":
         print(f"{task:<12} {n:<10} {impl:<25} {seconds_text:<15}")
         csv_rows.append((task, n, impl, seconds_text))
 
+    # Сохраняем результаты в CSV-файл
     write_csv(
         csv_rows,
         "data/lab07/bench.csv",
         header=("task", "n", "impl", "seconds")
     )
 
-    print("\nРезультаты сохранены в data/lab07/bench.csv")
+    print("\nResults saved to data/lab07/bench.csv")
 ```
 
 Запуск:
