@@ -89,30 +89,3 @@ def two_sum_fast(nums, target):
     # Если подходящая пара не найдена
     return None
 
-
-if __name__ == "__main__":
-
-    # Проверка линейного поиска
-    print("\nLinear Search:")
-    print(linear_search([4, 2, 7, 2], 2))
-    print(linear_search([4, 2, 7, 2], 9))
-    print(linear_search([], 5))
-
-    # Проверка бинарного поиска
-    print("\nBinary Search:")
-    print(binary_search([1, 3, 5, 7, 9], 5))
-    print(binary_search([1, 3, 5, 7, 9], 3))
-    print(binary_search([1, 3, 5, 7, 9], 10))
-    print(binary_search([], 5))
-
-    # Проверка поиска пары перебором
-    print("\nTwo Sum Brute:")
-    print(two_sum_brute([2, 7, 11, 15], 9))
-    print(two_sum_brute([1, 2, 3], 10))
-    print(two_sum_brute([4, 4, 8], 8))
-
-    # Проверка быстрого поиска пары через словарь
-    print("\nTwo Sum Fast:")
-    print(two_sum_fast([2, 7, 11, 15], 9))
-    print(two_sum_fast([1, 2, 3], 10))
-    print(two_sum_fast([4, 4, 8], 8))

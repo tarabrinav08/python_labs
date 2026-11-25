@@ -110,44 +110,7 @@ def two_sum_fast(nums, target):
 
     # Если подходящая пара не найдена
     return None
-
-
-if __name__ == "__main__":
-
-    # Проверка линейного поиска
-    print("\nLinear Search:")
-    print(linear_search([4, 2, 7, 2], 2))
-    print(linear_search([4, 2, 7, 2], 9))
-    print(linear_search([], 5))
-
-    # Проверка бинарного поиска
-    print("\nBinary Search:")
-    print(binary_search([1, 3, 5, 7, 9], 5))
-    print(binary_search([1, 3, 5, 7, 9], 3))
-    print(binary_search([1, 3, 5, 7, 9], 10))
-    print(binary_search([], 5))
-
-    # Проверка поиска пары перебором
-    print("\nTwo Sum Brute:")
-    print(two_sum_brute([2, 7, 11, 15], 9))
-    print(two_sum_brute([1, 2, 3], 10))
-    print(two_sum_brute([4, 4, 8], 8))
-
-    # Проверка быстрого поиска пары через словарь
-    print("\nTwo Sum Fast:")
-    print(two_sum_fast([2, 7, 11, 15], 9))
-    print(two_sum_fast([1, 2, 3], 10))
-    print(two_sum_fast([4, 4, 8], 8))
 ```
-
-Запуск:
-
-```bash
-python3 -m src.lab07.search
-```
-
-![search](../../images/lab07/search.png)
-
 ---
 
 ## Задание B. Сортировки (`sorting.py`)
@@ -229,35 +192,7 @@ def selection_sort(nums):
         nums[i], nums[min_index] = nums[min_index], nums[i]
 
     return nums
-
-
-if __name__ == "__main__":
-    # Проверка сортировки пузырьком
-    print("\nBubble Sort:")
-    print(bubble_sort([3, 1, 2]))
-    print(bubble_sort([2, 2, 1]))
-    print(bubble_sort([]))
-
-    # Проверка сортировки вставками
-    print("\nInsertion Sort:")
-    print(insertion_sort([3, 1, 2]))
-    print(insertion_sort([5, 2, 4]))
-    print(insertion_sort([]))
-
-    # Проверка сортировки выбором
-    print("\nSelection Sort:")
-    print(selection_sort([3, 1, 2]))
-    print(selection_sort([5, 2, 8, 1]))
-    print(selection_sort([]))
 ```
-
-Запуск:
-
-```bash
-python3 -m src.lab07.sorting
-```
-
-![sorting](../../images/lab07/sorting.png)
 
 ---
 

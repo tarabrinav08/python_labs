@@ -73,22 +73,3 @@ def selection_sort(nums):
 
     return nums
 
-
-if __name__ == "__main__":
-    # Проверка сортировки пузырьком
-    print("\nBubble Sort:")
-    print(bubble_sort([3, 1, 2]))
-    print(bubble_sort([2, 2, 1]))
-    print(bubble_sort([]))
-
-    # Проверка сортировки вставками
-    print("\nInsertion Sort:")
-    print(insertion_sort([3, 1, 2]))
-    print(insertion_sort([5, 2, 4]))
-    print(insertion_sort([]))
-
-    # Проверка сортировки выбором
-    print("\nSelection Sort:")
-    print(selection_sort([3, 1, 2]))
-    print(selection_sort([5, 2, 8, 1]))
-    print(selection_sort([]))
